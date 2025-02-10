@@ -1,2 +1,5 @@
 Bonjour 
  cv?
+
+
+ echo 'export MA_JOLIE_VARIABLE="coucou"' >> ~/.bashrc
