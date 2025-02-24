@@ -42,3 +42,6 @@ def extract_images(pdfs_directory_path: str, images_directory_path: str) -> Extr
                         file_stream.write(image_bytes_io.getbuffer())
 
     return ExtractImagesResult(number_files_input=len(pdfs), number_images_output=number_images_output)
+
+
+
