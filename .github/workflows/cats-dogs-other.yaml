@@ -1,4 +1,5 @@
 name: Cats and dogs CI/CD
+
 on:
   push:
     branches:
@@ -8,6 +9,20 @@ jobs:
   train:
     runs-on: ubuntu-latest
     steps:
-      - name: Première step d'intro !!
+      - name: Récupérer le code source
+        uses: actions/checkout@v3
+
+      - name: Configurer Python 3.11
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.11
+
+      - name: Mettre à jour pip et installer les dépendances
         run: |
-          echo "COUCOU !"
+          pip install --upgrade pip
+          ./init_packages.sh
+          pip install -r ./cats_dogs_other/requirements.txt
+          pip install -r ./cats_dogs_other/label/requirements.txt
+
+      - name: Exécuter les tests unitaires
+        run: python -m unittest
